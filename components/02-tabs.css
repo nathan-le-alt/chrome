@@ -1,0 +1,368 @@
+/*
+Tabs & Tabbar (Horizontal, Native Vertical, Split Views)
+*/
+
+:root {
+  --tab-min-height: 32px !important;
+}
+
+/* Active tab: adds a white underline below the selected tab */
+.tabbrowser-tab[visuallyselected] .tab-content {
+  border-bottom: 2px solid light-dark(#1a1a1a, #ffffff) !important;
+  margin-bottom: 4px !important;
+}
+
+/* Active tab: removes the default focus ring, shadow, and border Firefox draws around it */
+.tabbrowser-tab[visuallyselected] .tab-background {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Active tab: forces full opacity so it stands out from inactive tabs */
+.tabbrowser-tab:not([visuallyselected]) :is(.tab-label, .tab-icon-stack) {
+  opacity: 0.5 !important;
+  transition: opacity 0.15s ease-in-out !important;
+}
+
+.tabbrowser-tab:not([visuallyselected]):hover :is(.tab-label, .tab-icon-stack) {
+  opacity: 0.4 !important;
+  transition: opacity 0.15s ease-in-out !important;
+}
+
+/* Removes the thin vertical divider lines Firefox draws between tabs by default */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border-left: none !important;
+}
+
+/* Removes gap after pinned tabs so the next tab sits flush */
+#pinned-tabs-container[orient="horizontal"] {
+  margin-inline-end: 0px !important;
+}
+
+/* Fades tab label color changes smoothly instead of snapping */
+.tabbrowser-tab .tab-label-container .tab-label {
+  transition: color 100ms ease !important;
+}
+
+/* Removes border and shadow under the tab bar */
+#navigator-toolbox {
+  --tabs-border-color: transparent !important;
+  --tabs-navbar-shadow-size: 0px !important;
+}
+
+/* Hides the loading fill animation on tab favicons */
+#tabbrowser-tabs {
+  --tab-loading-fill: transparent !important;
+}
+
+/* Dims favicons on inactive tabs, fades smoothly */
+.tabbrowser-tab:not([selected]):not([multiselected]):not(:hover) .tab-icon-image {
+  opacity: 0.8 !important;
+  transition: opacity 100ms ease !important;
+}
+
+/* Inactive tab hover: swaps to hover color when mouse is over */
+:root:not([lwtheme]) #tabbrowser-tabs .tabbrowser-tab:hover>.tab-stack>.tab-background:not([selected]) {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+  box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+}
+
+/* Active tab: flat background, no shadow or outline */
+:root:not([lwtheme]) #tabbrowser-tabs .tabbrowser-tab .tab-background[selected] {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Multiselected tabs: same flat style as active tab */
+:root:not([lwtheme]) #tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected] {
+  border: 0 !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-image: none !important;
+  outline: none !important;
+  background-color: var(--firefoxcss-tab-active-bg-color) !important;
+  box-shadow: none !important;
+}
+
+/* Show Tab close button on hover */
+#navigator-toolbox .tabbrowser-tab:not([pinned]) .tab-close-button {
+  display: flex !important;
+  opacity: 0;
+  visibility: collapse !important;
+  transition: opacity 0.15s ease, visibility 0.15s ease, background-color 0.15s ease !important;
+}
+
+#navigator-toolbox .tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: 1;
+  visibility: visible !important;
+  border-radius: 100% !important;
+}
+
+/* Dragging tab blur effect */
+:root:not([lwtheme]) #tabbrowser-tabs[movingtab]>#tabbrowser-arrowscrollbox>.tabbrowser-tab:is([selected], [multiselected]) .tab-background {
+  background-color: color-mix(in srgb, var(--firefoxcss-tab-active-bg-color) 50%, transparent) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Horizontal Layout */
+
+@media not -moz-pref("sidebar.verticalTabs") {
+
+  .tab-audio-button {
+    #tabbrowser-tabs:is([orient="horizontal"]) &:not([pinned]):not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+      color: var(--firefoxcss-tab-speaker-icon-color) !important;
+      --button-text-color-ghost: var(--firefoxcss-tab-speaker-icon-color) !important;
+      border-radius: 20px !important;
+      transform: scale(1);
+      filter: drop-shadow(-1px 1px 1px light-dark(#0000002e, #00000052));
+      border: none !important;
+      background-color: transparent !important;
+      transition: transform 150ms ease-in-out, fill 100ms ease-in-out, background-color 100ms ease-in-out !important;
+      --button-border-radius: 20px !important;
+
+      &:hover {
+        background-color: var(--firefoxcss-tab-speaker-color) !important;
+        color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+        --button-text-color-ghost-hover: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+        transform: scale(0.8);
+        border: none !important;
+        transition: transform 150ms ease-in-out, fill 100ms ease-in-out, background-color 100ms ease-in-out, filter 100ms ease-in-out !important;
+      }
+
+      &:hover:active {
+        color: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+        --button-text-color-ghost-active: var(--firefoxcss-tab-speaker-icon-hover-color) !important;
+      }
+    }
+  }
+
+  .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    background-image: none !important;
+    background-color: #0000002e !important;
+    backdrop-filter: blur(6px);
+    border: 1px solid #ffffff29 !important;
+    fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+    transition: transform 100ms ease-in-out, fill 100ms ease-in-out, background-color 100ms ease-in-out;
+
+    &:hover {
+      fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+      background-color: #ffffff14 !important;
+      border: 1px solid #ffffff29 !important;
+      transform: scale(1.2) translate(-8%, 14%);
+      transform-origin: center !important;
+    }
+  }
+
+  :root:not([uidensity="compact"]) .tab-content[pinned] {
+    padding: 0 8px !important;
+  }
+
+  #tabbrowser-tabs .tabbrowser-tab:not([pinned]) {
+    transition: min-width 50ms ease-out, max-width 50ms ease-out !important;
+  }
+
+  #tabbrowser-tabs .tabbrowser-tab[fadein]:not([pinned]) {
+    max-width: var(--firefoxcss-tab-max-width) !important;
+    min-width: var(--firefoxcss-tab-min-width) !important;
+    flex-grow: 1 !important;
+  }
+
+  #tabbrowser-tabs:not([overflow]) .tabbrowser-tab[selected][fadein]:not([pinned]) {
+    max-width: var(--firefoxcss-tab-max-width) !important;
+  }
+
+  #tabbrowser-tabs[overflow] .tabbrowser-tab[selected][fadein]:not([pinned]) {
+    min-width: var(--firefoxcss-tab-min-width) !important;
+  }
+
+  #TabsToolbar {
+    padding-top: 0px !important;
+    padding-bottom: 3px !important;
+  }
+
+  #tabbrowser-tabs .tabbrowser-tab::before,
+  #tabbrowser-tabs .tabbrowser-tab::after {
+    border: 0 !important;
+  }
+
+  #scrollbutton-up~spacer {
+    border-color: transparent !important;
+  }
+}
+
+/* Native Vertical Tabs Layout */
+
+@media -moz-pref("sidebar.verticalTabs") {
+
+  .tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]),
+  .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    background-image: none !important;
+    background-color: #0000002e !important;
+    backdrop-filter: blur(6px);
+    fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+    transition: transform 100ms ease-in-out, fill 100ms ease-in-out, background-color 100ms ease-in-out;
+  }
+
+  .tabbrowser-tab .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]):hover,
+  .tabbrowser-tab[pinned] .tab-icon-overlay:not([crashed]):is([soundplaying], [muted], [activemedia-blocked]):hover {
+    fill: var(--firefoxcss-tab-speaker-icon-color) !important;
+    border: 1px solid #ffffff29 !important;
+    background-color: #ffffff14 !important;
+    transform: scale(1.2) translate(-8%, 14%);
+    transform-origin: center !important;
+  }
+}
+
+tab-group[collapsed]>.tabbrowser-tab {
+  visibility: collapse !important;
+}
+
+@media -moz-pref("mod.centered.tabs") {
+  @media not -moz-pref("sidebar.verticalTabs") {
+    #tabbrowser-arrowscrollbox:not([overflowing]) {
+      --uc-justify-content: center;
+    }
+
+    scrollbox[orient="horizontal"]>slot {
+      justify-content: var(--uc-justify-content, initial);
+    }
+  }
+}
+
+/* Split View Fixes */
+
+#tabbrowser-tabpanels[splitview] .split-view-splitter {
+  border: 1px solid transparent !important;
+  border-width: 0px 1px !important;
+  background-color: transparent !important;
+}
+
+#tabbrowser-tabs[orient="horizontal"] tab-split-view-wrapper {
+  margin-inline: 2px !important;
+}
+
+#tabbrowser-tabs tab-split-view-wrapper:not([hasactivetab]) .tabbrowser-tab:last-child {
+  border-inline-start: 0px solid transparent !important;
+}
+
+#tabbrowser-tabs[orient="vertical"] tab-split-view-wrapper {
+  @container vertical-tabs-container (max-width: 210px) {
+    &:not([hasactivetab]) .tabbrowser-tab:first-child {
+      border-block-end: 0px solid transparent !important;
+    }
+  }
+}
+
+.toolbar-items #tabbrowser-tabs[orient="horizontal"] tab-split-view-wrapper {
+  border-radius: var(--firefoxcss-border-radius) !important;
+
+  & .tabbrowser-tab {
+    padding-inline: 1px !important;
+
+    & .tab-background {
+      margin-inline: 1px !important;
+      border-radius: calc(var(--firefoxcss-border-radius) - 2px) !important;
+    }
+
+    &:hover .tab-background,
+    & .tab-background[selected] {
+      border-radius: calc(var(--firefoxcss-border-radius) - 2px) !important;
+    }
+  }
+
+  :root:not([lwtheme]) &[hasactivetab] {
+    background-color: var(--firefoxcss-tab-bg-color) !important;
+    box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+    outline: 1px solid light-dark(#4f4f4f3d, #fefefe1a) !important;
+    outline-offset: -1px !important;
+
+    & .tab-background,
+    & .tabbrowser-tab:hover .tab-background {
+      box-shadow: none !important;
+    }
+  }
+
+  &:not([hasactivetab]) {
+    background-color: var(--firefoxcss-tab-bg-color) !important;
+    box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+    outline: 1px solid light-dark(#4f4f4f21, #fefefe0d) !important;
+    outline-offset: -1px !important;
+
+    & .tab-background {
+      box-shadow: none !important;
+    }
+
+    &:hover .tabbrowser-tab:hover .tab-background {
+      box-shadow: none !important;
+    }
+  }
+}
+
+#vertical-tabs #tabbrowser-tabs[orient="vertical"] tab-split-view-wrapper {
+  border-radius: var(--firefoxcss-border-radius) !important;
+
+  & .tabbrowser-tab .tab-background {
+    margin-inline: 1px !important;
+    margin-block: 0px !important;
+  }
+
+  :root:not([lwtheme]) &[hasactivetab] {
+    background-color: var(--firefoxcss-tab-bg-color) !important;
+    box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+    outline: 1px solid light-dark(#4f4f4f3d, #fefefe1a) !important;
+    outline-offset: -1px !important;
+
+    & .tab-background,
+    & .tabbrowser-tab:hover .tab-background {
+      box-shadow: none !important;
+    }
+  }
+
+  &:not([hasactivetab]) {
+    background-color: var(--firefoxcss-tab-bg-color) !important;
+    box-shadow: var(--firefoxcss-normal-tabs-box-shadow) !important;
+    outline: 1px solid light-dark(#4f4f4f21, #fefefe0d) !important;
+    outline-offset: -1px !important;
+
+    & .tab-background {
+      box-shadow: none !important;
+    }
+
+    &:hover .tabbrowser-tab:hover .tab-background {
+      box-shadow: none !important;
+    }
+  }
+}
+
+#TabsToolbar #tabbrowser-tabs .tabbrowser-tab[usercontextid] .tab-background:not([selected]) {
+  background: var(--identity-tab-color) !important;
+  opacity: 0.3 !important;
+}
+
+#tabbrowser-tabs .tab-context-line {
+  display: none !important;
+}
+
+@media -moz-pref("browser.tabs.fadeOutUnloadedTabs") {
+
+  .tabbrowser-tab[pending] .tab-icon-stack,
+  .tabbrowser-tab[pending] .tab-text.tab-label {
+    opacity: 0.33 !important;
+  }
+}
+
+@media -moz-pref("mod.disable.tab.preview.panel.fully") {
+
+  #tab-preview-panel,
+  #tabbrowser-tab-tooltip {
+    display: none !important;
+  }
+}

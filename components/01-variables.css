@@ -1,0 +1,134 @@
+/*
+Global Variables & Native Overrides
+*/
+
+:root {
+
+  /* Base Surface Colors */
+
+  /* Darkest surface: urlbar, active tab */
+  --firefoxcss-main-bg-color: light-dark(oklch(0.98 0.003 200), oklch(0.23 0.005 240));
+
+  /* Lighter surface: toolbar background */
+  --firefoxcss-item-bg-color: light-dark(oklch(0.96 0.003 200), oklch(0.29 0.005 240));
+
+  /* Tabs */
+
+  --firefoxcss-tab-bg-color: light-dark(oklch(0.94 0.003 200), oklch(0.35 0.005 240));
+  --firefoxcss-tab-hover-bg-color: light-dark(oklch(0.90 0.003 200), oklch(0.40 0.005 240));
+  --firefoxcss-tab-active-bg-color: var(--firefoxcss-main-bg-color);
+  --firefoxcss-non-active-tabs: light-dark(oklch(0.34 0 0), oklch(1 0 0 / 0.65));
+
+  --firefoxcss-normal-tabs-box-shadow: 1px 1px 1px -1px light-dark(transparent, oklch(0 0 0 / 0.4));
+  --firefoxcss-tab-multiselect-outline: light-dark(oklch(0.79 0.004 240), oklch(1 0 0 / 0.1));
+
+  /* Tab audio (speaker) icon states */
+  --firefoxcss-tab-speaker-color: light-dark(oklch(0.29 0 0), oklch(0.83 0 0));
+  --firefoxcss-tab-speaker-icon-color: light-dark(oklch(0.14 0 0), oklch(1 0 0));
+  --firefoxcss-tab-speaker-icon-hover-color: light-dark(oklch(1 0 0), oklch(0.14 0 0));
+  --firefoxcss-tab-speaker-icon-small-background: light-dark(oklch(0.29 0 0), oklch(0.83 0 0));
+
+  /* Bookmarks Bar */
+
+  --firefoxcss-bookmarks-bg-color: var(--firefoxcss-item-bg-color);
+
+  /* Page Load Flash */
+
+  --firefoxcss-bright-flash-color: var(--firefoxcss-main-bg-color);
+
+  /* Toolbar Buttons */
+
+  --firefoxcss-toolbar-button-box-shadow: light-dark(oklch(0 0 0 / 0), oklch(0 0 0 / 0.3));
+  --firefoxcss-toolbar-button-active-box-shadow: light-dark(oklch(0 0 0 / 0), oklch(0 0 0 / 0.3));
+
+  /* New Tab button states */
+  --firefoxcss-new-tab-button-active: light-dark(oklch(0.92 0.004 200), oklch(0.27 0.005 240));
+  --firefoxcss-new-tab-button-box-shadow-active: light-dark(oklch(0 0 0 / 0.4), oklch(0 0 0 / 0.6));
+  --firefoxcss-new-tab-button-hover: light-dark(oklch(0.86 0.003 200 / 0.65), oklch(0.39 0 0 / 0.85));
+  --firefoxcss-new-tab-button-box-shadow-hover: light-dark(oklch(0 0 0 / 0), oklch(0 0 0 / 0.5));
+
+  /* Url Bar and Breakout */
+
+  --firefoxcss-url-dark-border: color-mix(in srgb, var(--firefoxcss-main-bg-color) 0%, white);
+  --firefoxcss-url-breakout-border-bottom-color: light-dark(oklch(0.74 0 0 / 0.05), color-mix(in srgb, var(--firefoxcss-url-dark-border) 25%, white));
+  --firefoxcss-url-breakout-border-top-color: transparent;
+  --firefoxcss-url-bar-bg-color: light-dark(oklch(0.93 0.003 200), var(--firefoxcss-main-bg-color));
+  --firefoxcss-url-border-bottom-color: light-dark(oklch(1 0 0), oklch(1 0 0 / 0.2));
+  --firefoxcss-url-border-top-color: light-dark(oklch(0 0 0 / 0), oklch(0 0 0 / 0.15));
+  --firefoxcss-url-breakout-bar-bg-color: light-dark(oklch(0.98 0.003 200), var(--firefoxcss-main-bg-color));
+  --firefoxcss-url-autocomplete-highlight: light-dark(oklch(0.92 0.003 200), oklch(0.35 0.005 240));
+  --firefoxcss-url-breakout-box-shadow:
+    2px 10px 22px light-dark(transparent, oklch(0.12 0 0 / 0.1)),
+    0px 4px 2px light-dark(transparent, oklch(0 0 0 / 0.09)),
+    0px 16px 16px light-dark(transparent, oklch(0 0 0 / 0.09)),
+    0px -1px 0 0px light-dark(transparent, oklch(0.31 0 0 / 0.1));
+  --firefoxcss-url-clipboard-button: color-mix(in srgb, currentColor 10%, transparent);
+  --firefoxcss-urlbar-zoom-button: light-dark(oklch(0.67 0.003 200 / 0.35), oklch(0.67 0 0 / 0.35));
+
+  /* Context Menu */
+
+  --firefoxcss-context-menu-top-color: light-dark(oklch(0.96 0.004 240), oklch(0.18 0 0 / 0.81));
+  --firefoxcss-contextmenu-hover-text: light-dark(black, white);
+  --firefoxcss-context-menu-item-bg-color: light-dark(oklch(0.75 0.004 240 / 0.35), oklch(0.67 0 0 / 0.3));
+  --firefoxcss-context-menu-item-bg-color-inactive: light-dark(oklch(0.75 0.004 240 / 0.15), oklch(0.67 0 0 / 0.15));
+
+  /* Customize Toolbar View */
+
+  --firefoxcss-customize-view-dashed-outline: light-dark(oklch(0 0 0 / 0.2), oklch(1 0 0 / 0.25));
+  --firefoxcss-customize-view-flex-space: light-dark(oklch(0.76 0.04 70), #d0ba9e);
+  --firefoxcss-customize-view-overflow-menu: light-dark(oklch(1 0 0), oklch(0.20 0.005 240));
+
+  /* Miscellaneous & Layout */
+
+  --firefoxcss-top-bar-border-bottom-color: light-dark(oklch(0 0 0 / 0.1), oklch(0.17 0 0 / 0.2));
+  --firefoxcss-private-browsing-menu-color: light-dark(oklch(0.66 0.22 301), oklch(0.72 0.19 303));
+  --firefoxcss-private-browsing-drop-shadow: drop-shadow(0px 0px 1px light-dark(transparent, #000000d5));
+  --firefoxcss-statuspanel-bg-color: light-dark(oklch(0.98 0.004 200), var(--firefoxcss-main-bg-color));
+
+  --firefoxcss-top-bar-border-bottom-size: 1px;
+  --firefoxcss-border-radius: 10px;
+  --firefoxcss-control-buttons-margin: 55px;
+  --firefoxcss-tab-min-width: 80px;
+  --firefoxcss-tab-max-width: 220px;
+  --firefoxcss-searchbar-height: 30px;
+  --firefoxcss-searchbar-container-height: 38px;
+  --urlbar-inner-border-radius: calc(var(--firefoxcss-border-radius) - 2px) !important;
+
+  --toolbarbutton-padding-outer: 2px !important;
+  --toolbarbutton-padding-inner: 6px !important;
+  --panel-menuitem-padding-block: 6px !important;
+  --panel-menuitem-padding-inline: 8px !important;
+  --panel-subview-body-padding-block: 4px !important;
+  --panel-separator-padding-vertical: 1px !important;
+  --panel-menuitem-padding: 4px 6px !important;
+  --panel-menuitem-margin: 2px 6px !important;
+  --panel-padding-block: 3px 1px !important;
+  --panel-subview-body-padding: 4px 0px !important;
+
+  /* Firefox Native Overrides */
+  --toolbarbutton-hover-background: light-dark(oklch(0.75 0.004 200 / 0.35), oklch(0.67 0 0 / 0.35)) !important;
+  --urlbar-box-background-color-hover: var(--toolbarbutton-hover-background) !important;
+  --urlbarview-background-color-selected: light-dark(color-mix(in srgb, currentColor 12%, transparent), #0063e1) !important;
+  --urlbarView-hover-background: color-mix(in srgb, currentColor 6%, transparent) !important;
+  --urlbarview-background-color-hover: var(--urlbarView-hover-background) !important;
+  --urlbarView-highlight-background: light-dark(color-mix(in srgb, currentColor 12%, transparent), color-mix(in srgb, currentColor 10%, transparent)) !important;
+  --toolbarbutton-active-background: light-dark(oklch(0.59 0.004 200 / 0.35), oklch(0.83 0 0 / 0.35)) !important;
+  --button-hover-bgcolor: light-dark(oklch(0.75 0.004 200 / 0.35), oklch(0.67 0 0 / 0.35)) !important;
+  --button-active-bgcolor: light-dark(oklch(0.59 0.004 200 / 0.35), oklch(0.55 0 0 / 0.35)) !important;
+  --button-bgcolor: light-dark(oklch(0.54 0 0 / 0.1), oklch(0.55 0 0 / 0.9)) !important;
+  --dark-menu-background-color: #222121 !important;
+  --dark-menu-border-color: rgb(55 55 55) !important;
+  --dark-menuitem-hover-background-color: rgba(159 159 159 / 0.35) !important;
+  --in-content-page-background: light-dark(var(--panel-background-color), var(--firefoxcss-main-bg-color)) !important;
+
+  /* Global Font Override */
+  font-family: monospace !important;
+}
+
+:root:not([lwtheme]) {
+  --toolbar-bgcolor: var(--firefoxcss-item-bg-color) !important;
+}
+
+tooltip {
+  font-family: monospace !important;
+}

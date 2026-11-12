@@ -1,0 +1,652 @@
+/*
+WINDOW CONTROLS, PLATFORM FIXES, MODS & BLURS
+*/
+
+/* 1. Window Control Buttons (Windows) */
+
+@media (-moz-platform: windows) {
+
+  .titlebar-buttonbox-container {
+    #toolbar-menubar[autohide="true"]:not([inactive])+#TabsToolbar>& {
+      visibility: visible !important;
+    }
+  }
+
+  @media -moz-pref("sidebar.verticalTabs") {
+    #toolbar-menubar[autohide]:not([inactive])~ :is(#TabsToolbar, #nav-bar)>.titlebar-buttonbox-container {
+      visibility: unset !important;
+    }
+  }
+
+  #TabsToolbar .titlebar-buttonbox-container,
+  #nav-bar .titlebar-buttonbox-container {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    padding-right: 3px !important;
+    padding-left: 3px !important;
+  }
+
+  .titlebar-buttonbox-container .titlebar-button>.toolbarbutton-icon {
+    height: 12px !important;
+    min-height: 12px !important;
+    width: 12px !important;
+    min-width: 12px !important;
+  }
+
+  .titlebar-buttonbox-container .titlebar-button {
+    border-radius: var(--toolbarbutton-border-radius);
+    padding: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+
+  @media not -moz-pref("mod.tabs.on.top.enable") {
+
+    #toolbar-menubar .titlebar-button {
+      padding-block: 0px !important;
+    }
+
+    #nav-bar-customization-target> :is(toolbarbutton, toolbaritem):first-child {
+      padding-inline-start: 2px !important;
+    }
+
+    :root[sizemode="maximized"] .titlebar-buttonbox-container {
+      padding-top: 0px !important;
+    }
+
+    #navigator-toolbox[inFullscreen] #nav-bar {
+      padding-right: initial !important;
+    }
+
+    @media not -moz-pref("sidebar.verticalTabs") {
+
+      #nav-bar {
+        padding-right: 0 !important;
+      }
+
+      #tabbrowser-tabs,
+      .tabbrowser-tabs .tabbrowser-tab {
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      .tabbrowser-tab {
+        margin-left: 2px !important;
+        margin-top: 4px !important;
+      }
+
+      #navigator-toolbox:not([inFullscreen]) .TabsToolbar .titlebar-buttonbox-container {
+        position: relative !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      #alltabs-button,
+      #tabs-newtab-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      #tabs-newtab-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 1px dotted red !important;
+        margin-left: 3px !important;
+        margin-top: 5px !important;
+        align-self: center !important;
+        height: 30px !important;
+        width: 30px !important;
+      }
+
+      .titlebar-buttonbox-container .titlebar-min,
+      .titlebar-buttonbox-container .titlebar-max,
+      .titlebar-buttonbox-container .titlebar-restore,
+      .titlebar-buttonbox-container .titlebar-close,
+      #alltabs-button .toolbarbutton-1,
+      #alltabs-button>.toolbarbutton-badge-stack {
+        height: 30px !important;
+        width: 30px !important;
+        padding: 0px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      #main-window[sizemode="maximized"] .titlebar-max {
+        display: none !important;
+      }
+
+      #main-window:not([sizemode="maximized"]) .titlebar-restore {
+        display: none !important;
+      }
+
+      .titlebar-buttonbox-container .titlebar-min {
+        order: 0 !important;
+      }
+
+      .titlebar-buttonbox-container .titlebar-max,
+      .titlebar-buttonbox-container .titlebar-restore {
+        order: 1 !important;
+      }
+
+      .titlebar-buttonbox-container .titlebar-close {
+        order: 2 !important;
+      }
+
+      @media only screen and (max-width: 670px) {
+        #navigator-toolbox:not([inFullscreen]) #TabsToolbar .titlebar-buttonbox-container {
+          visibility: visible !important;
+          display: flex !important;
+          position: relative !important;
+          order: 1 !important;
+          padding-top: 1px !important;
+          padding-bottom: 1px !important;
+        }
+
+        #navigator-toolbox:not([inFullscreen]) #nav-bar {
+          padding-right: initial !important;
+        }
+      }
+    }
+  }
+}
+
+/* 2. Miscellaneous Status Panel & Menus */
+
+#statuspanel-label {
+  background-color: light-dark(oklch(0.98 0.004 200), black) !important;
+  border-radius: 4px !important;
+  border-color: transparent !important;
+  color: light-dark(black, white) !important;
+  margin: 0 0 3px 3px !important;
+  padding: 4px !important;
+}
+
+#urlbar .search-one-offs .search-panel-one-offs-header-label {
+  display: none !important;
+}
+
+#toolbar-menubar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+#toolbar-menubar {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  line-height: 22px !important;
+  max-height: 22px !important;
+}
+
+:root[sizemode="fullscreen"] #navigator-toolbox {
+  position: relative;
+}
+
+:root[taskbartab] #navigator-toolbox:not([tabs-hidden]) #nav-bar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+:root[taskbartab] #nav-bar .titlebar-spacer[type="pre-tabs"] {
+  width: 20px !important;
+  display: initial !important;
+}
+
+/* 3. Theme Colors & Backgrounds */
+
+:root[privatebrowsingmode="temporary"] {
+  --tabpanel-background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+:root:not([lwtheme]) #tabbrowser-tabpanels .browserContainer {
+  background-color: var(--firefoxcss-bright-flash-color) !important;
+}
+
+:root:not([lwtheme]) .browserContainer>findbar {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+@media (not -moz-pref("sidebar.verticalTabs")) and (not -moz-pref("browser.nova.enabled")) {
+  #browser {
+    background-color: var(--firefoxcss-item-bg-color) !important;
+  }
+}
+
+:root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
+  fill: var(--firefoxcss-private-browsing-menu-color) !important;
+}
+
+:root[privatebrowsingmode="temporary"] #PanelUI-menu-button .toolbarbutton-badge-stack .toolbarbutton-icon {
+  filter: var(--firefoxcss-private-browsing-drop-shadow) !important;
+}
+
+/* 4. Linux Support */
+
+@media (-moz-platform: linux) {
+
+  #tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container {
+    height: 2.4em !important;
+    font-size: 0.85em;
+  }
+
+  @media -moz-pref("sidebar.verticalTabs") {
+    #nav-bar {
+      padding-bottom: 1px !important;
+      border-top: none !important;
+    }
+  }
+
+  @media -moz-pref("sidebar.verticalTabs") {
+    #nav-bar .titlebar-spacer[type="post-tabs"] {
+      display: none !important;
+    }
+  }
+
+  #toolbar-menubar[autohide]:not([inactive])~ :is(#TabsToolbar, #nav-bar)> :is(.titlebar-buttonbox-container) {
+    visibility: visible !important;
+  }
+
+  /* .titlebar-buttonbox-container {
+        #TabsToolbar>&,
+        #nav-bar>&,
+        #toolbar-menubar & {
+        display: none !important;
+        }
+    }
+
+    #TabsToolbar>.titlebar-spacer,
+    #nav-bar>.titlebar-spacer {
+        display: none !important;
+    } */
+
+  @media not -moz-pref("sidebar.verticalTabs") {
+    @media not -moz-pref("mod.tabs.on.top.enable") {
+      #nav-bar>.titlebar-buttonbox-container {
+        display: none !important;
+      }
+    }
+
+    @media -moz-pref("mod.tabs.on.top.enable") {
+      #TabsToolbar>.titlebar-buttonbox-container {
+        display: flex !important;
+      }
+    }
+  }
+
+  @media -moz-pref("sidebar.verticalTabs") {
+    #nav-bar:not([tabs-hidden])>.titlebar-buttonbox-container {
+      display: flex !important;
+    }
+  }
+
+  @media -moz-pref("mod.force.window.control.buttons.left.side"),
+  (-moz-gtk-csd-reversed-placement),
+  -moz-pref("mod.macos") {
+    @media not -moz-pref("mod.force.window.control.buttons.right.side") {
+      #navigator-toolbox .titlebar-buttonbox-container {
+        order: -1 !important;
+      }
+
+      @media (-moz-platform: windows) {
+        #navigator-toolbox .titlebar-buttonbox-container {
+          & .titlebar-min {
+            order: 3 !important;
+          }
+
+          & .titlebar-max,
+          & .titlebar-restore {
+            order: 2 !important;
+          }
+
+          & .titlebar-close {
+            order: 1 !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media not (-moz-pref("mod.force.window.control.buttons.left.side") or (-moz-gtk-csd-reversed-placement) or -moz-pref("mod.macos")),
+  -moz-pref("mod.force.window.control.buttons.right.side") {
+
+    #navigator-toolbox .titlebar-buttonbox-container {
+      & .titlebar-min {
+        order: 1 !important;
+      }
+
+      & .titlebar-max,
+      & .titlebar-restore {
+        order: 2 !important;
+      }
+
+      & .titlebar-close {
+        order: 3 !important;
+      }
+    }
+  }
+
+  @media not -moz-pref("sidebar.verticalTabs") {
+    @media not -moz-pref("mod.tabs.on.top.enable") {
+      @media (max-width: 600px) {
+        #navigator-toolbox #nav-bar>.titlebar-buttonbox-container {
+          display: none !important;
+        }
+
+        #navigator-toolbox #TabsToolbar>.titlebar-buttonbox-container {
+          display: flex !important;
+        }
+      }
+    }
+  }
+}
+
+@media not -moz-pref("svg.context-properties.content.enabled") {
+  #navigator-toolbox::before {
+    width: 100%;
+    content: ">>>> To fix buttons enable svg.context-properties.content.enabled in about:config <<<<";
+    color: #ffc6a4;
+    text-align: center;
+    font-weight: 300;
+    padding: 5px;
+    background-color: #000;
+    font-size: 1.1rem;
+  }
+}
+
+/* 5. Window Frame Styles */
+
+@media -moz-pref("mod.main.window.frame.style-1") or -moz-pref("mod.main.window.frame.style-2") {
+
+  #tabbrowser-tabpanels[splitview] .split-view-panel.split-view-panel-active {
+    margin: 0px !important;
+  }
+
+  #tabbrowser-tabbox #tabbrowser-tabpanels[splitview] {
+    .split-view-panel[column="0"] .browserContainer {
+      margin-inline-end: 0 !important;
+    }
+
+    .split-view-panel[column="1"] .browserContainer {
+      margin-inline-start: 0 !important;
+    }
+  }
+
+  :root {
+    --firefoxcss-top-bar-border-bottom-size: 0px !important;
+  }
+
+  @media -moz-pref("sidebar.revamp") {
+    #tabbrowser-tabbox .browserContainer {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  #main-window:not([chromehidden~="toolbar"]) {
+    --uc-tweak-rounded-corners-padding: 6px;
+    --uc-tweak-rounded-corners-padding2: 1px;
+    --uc-tweak-rounded-corners-padding3: var(--uc-tweak-rounded-corners-padding);
+    --uc-tweak-rounded-corners-radius: 10px;
+
+    @media -moz-pref("sidebar.verticalTabs") {
+      --uc-tweak-rounded-corners-padding2: 0px;
+      --uc-tweak-rounded-corners-padding3: 0px;
+    }
+
+    --uc-tweak-rounded-corners-shadow: 0 -0.8px 0 0 oklch(0 0 0 / 0.02),
+    0 0.5px 1px 1px oklch(0 0 0 / 0.06),
+    0 1px 1px oklch(0 0 0 / 0.1);
+    --browser-frame-bgcolor: var(--firefoxcss-item-bg-color);
+
+    @media (resolution > 1.8dppx) {
+      --uc-tweak-rounded-corners-shadow: 0 0 0.5px 0.5px oklch(0 0 0 / 0.06), 0 0.5px 1.5px oklch(0 0 0 / 0.1);
+    }
+  }
+
+  #tabbrowser-tabbox .browserContainer {
+    margin-inline: var(--uc-tweak-rounded-corners-padding) !important;
+    margin-block-end: var(--uc-tweak-rounded-corners-padding) !important;
+    margin-block-start: var(--uc-tweak-rounded-corners-padding2) !important;
+    margin-inline-start: var(--uc-tweak-rounded-corners-padding3) !important;
+
+    border-radius: var(--uc-tweak-rounded-corners-radius) !important;
+    box-shadow: var(--uc-tweak-rounded-corners-shadow) !important;
+    background-color: var(--firefoxcss-main-bg-color) !important;
+    position: relative !important;
+
+    overflow: hidden !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow:
+        var(--uc-tweak-rounded-corners-shadow, 0 0 transparent),
+        0 0 0 16px var(--browser-frame-bgcolor),
+        inset 0px 1px 0 0px oklch(1 0 0 / 0.06) !important;
+      border: 1px solid hsla(0, 0%, 0%, 0.2) !important;
+
+      @media -moz-pref("mod.main.window.frame.style-2") {
+        box-shadow:
+          var(--uc-tweak-rounded-corners-shadow, 0 0 transparent),
+          0 0 0 16px var(--browser-frame-bgcolor) !important;
+        border: 1px solid oklch(1 0 0 / 0.12) !important;
+      }
+
+      clip-path: inset(0);
+      pointer-events: none;
+    }
+  }
+}
+
+/* 6. Transparent & Centered Bookmarks Bar */
+
+@media -moz-pref("mod.transparent.bookmarks-bar") or -moz-pref("mod.transparent.bookmarks-bar.centered") {
+
+  :root {
+    --firefoxcss-bookmarks-bg-color: transparent !important;
+  }
+
+  :root:not([lwtheme]) #navigator-toolbox #PersonalToolbar {
+    background-color: transparent !important;
+  }
+
+  #personal-bookmarks toolbarbutton.bookmark-item {
+    background-color: light-dark(oklch(0.94 0.003 200), hsl(0, 0%, 8%)) !important;
+  }
+
+  #personal-bookmarks #PlacesToolbarItems>toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"], [open]):hover {
+    background-color: light-dark(oklch(0.90 0.003 200), #393939) !important;
+  }
+
+  #personal-bookmarks #PlacesToolbarItems>toolbarbutton.bookmark-item:not(.subviewbutton, [disabled="true"]):hover:active,
+  #personal-bookmarks #PlacesToolbarItems>toolbarbutton.bookmark-item[open="true"] {
+    background-color: light-dark(oklch(0.86 0.003 200), #555555) !important;
+  }
+
+  #PersonalToolbar:not([customizing]) {
+    max-width: fit-content;
+
+    @media -moz-pref("mod.transparent.bookmarks-bar.centered") {
+      width: 100vw;
+      align-self: center;
+    }
+  }
+}
+
+/* 7. Floating Pop-out Search Bar */
+
+@media -moz-pref("mod.popout.searchbar") or -moz-pref("mod.popout.searchbar.no-animation") {
+
+  @keyframes mod-urlbarFlyIn2 {
+    0% {
+      transform: translateY(-15%) scale(0.9);
+    }
+
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  #urlbar:is([breakout][breakout-extend]) {
+    position: fixed !important;
+    width: 65vw !important;
+    max-width: 90vw !important;
+    min-width: 550px !important;
+
+    inset-inline-start: 0 !important;
+    inset-inline-end: 0 !important;
+    inset-block-start: 18% !important;
+    margin: 0 auto !important;
+    z-index: 9999 !important;
+
+    border-radius: var(--firefoxcss-border-radius) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+
+    &>.urlbar-input-container {
+      height: 44px !important;
+      padding: 8px 12px !important;
+    }
+
+    .urlbarView {
+      margin-inline: 0 !important;
+      width: 100% !important;
+    }
+
+    @media not -moz-pref("mod.popout.searchbar.no-animation") {
+      animation: mod-urlbarFlyIn2 120ms cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+  }
+
+  #navigator-toolbox #urlbar:is([breakout][breakout-extend]) .urlbar-background {
+    border-radius: 0 !important;
+    border: 1px solid light-dark(oklch(1 0 0 / 0.6), oklch(0.74 0 0 / 0.145)) !important;
+    outline: 1px solid light-dark(oklch(0 0 0 / 0.08), oklch(0 0 0 / 0.4)) !important;
+    backdrop-filter: blur(9px) !important;
+    background-color: light-dark(oklch(1 0 0 / 0.8), oklch(0.23 0.005 240 / 0.8)) !important;
+  }
+}
+
+/* 8. System-wide Blurs */
+
+@media -moz-pref("mod.panel-menu.blur") or -moz-pref("mod.searchbar.blur") or -moz-pref("mod.vertical-tabs.expand.blur") or -moz-pref("mod.combined.extra.blur") {
+  @media -moz-pref("mod.panel-menu.blur") or -moz-pref("mod.combined.extra.blur") {
+
+    panel#appMenu-popup,
+    panel#unified-extensions-panel,
+    panel#customizationui-widget-panel,
+    panel#downloadsPanel,
+    panel#trustpanel-popup,
+    panel#editBookmarkPanel,
+    panel#full-page-translations-panel,
+    panel#permission-popup,
+    panel#tab-preview-panel,
+    menupopup#BMB_bookmarksPopup,
+    panel#notification-popup,
+    panel#pageActionPanel,
+    panel#identity-popup,
+    panel#sidebarMenu-popup,
+    panel#ctrlTab-panel,
+
+    panel#notification-popup,
+    panel#appMenu-notification-popup,
+    /* add-on installed / update doorhangers */
+    panel#pageActionPanel,
+
+    menupopup#contentAreaContextMenu,
+    menupopup#tabContextMenu,
+    menupopup#toolbar-context-menu,
+    menupopup#placesContext {
+      appearance: menupopup !important;
+      background-color: transparent !important;
+      --panel-background-color: light-dark(oklch(1 0 0 / 0.7), oklch(0 0 0 / 0.6)) !important;
+      --panel-box-shadow-margin: 0px !important;
+    }
+  }
+
+
+  /* Remove popup panel outer default background & square corners */
+  panel,
+  menupopup {
+    --panel-background: transparent !important;
+    --arrowpanel-background: transparent !important;
+    --arrowpanel-border-color: transparent !important;
+    --panel-border-radius: 8px !important;
+
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .panel-arrowcontent,
+  .panel-subview-body,
+  panelmultiview {
+    border: none !important;
+    border-radius: var(--panel-border-radius, 8px) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    overflow: hidden !important;
+  }
+
+  /* Extension popup panels (e.g. KeePassXC popup wrapper) */
+  #extension-popup panel,
+  .webextension-popup {
+    background: transparent !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  panel,
+  menupopup,
+  .panel-arrowcontent {
+    transition: none !important;
+  }
+}
+
+/* 9. Permanent Pre-tab Spacer Removal */
+
+/* #TabsToolbar .titlebar-spacer[type="pre-tabs"],
+#TabsToolbar .titlebar-spacer[type="post-tabs"],
+#TabsToolbar .titlebar-spacer,
+#nav-bar .titlebar-spacer[type="pre-tabs"],
+#nav-bar .titlebar-spacer[type="post-tabs"],
+.titlebar-spacer[type="pre-tabs"] {
+    display: none !important;
+    width: 0px !important;
+} */
+
+#tabbrowser-tabs,
+#tabbrowser-arrowscrollbox {
+  margin-left: 0px !important;
+  margin-inline-start: 0px !important;
+  padding-inline-start: 0px !important;
+}
+
+:root[platform="linux"] #tabbrowser-tabs .tabbrowser-tab:first-child {
+  margin-inline-start: 0px !important;
+}
+
+
+/* 10. Taskbar Tab Window Control Buttons */
+
+:root[taskbartab] .titlebar-restore {
+  display: none !important;
+}
+
+:root[taskbartab][sizemode="maximized"] .titlebar-restore {
+  display: flex !important;
+}
+
+:root[taskbartab][sizemode="maximized"] .titlebar-max {
+  display: none !important;
+}

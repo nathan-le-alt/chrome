@@ -1,0 +1,210 @@
+/*
+ * 1. FIREFOX DEVTOOLS (Developer Tools)
+ */
+@-moz-document url-prefix("chrome://devtools/content/"), url-prefix("about:devtools"), url-prefix("chrome://devtools/") {
+
+  /* Apply custom monospace font globally across DevTools */
+  :not(.icon):not([class*="icon"]):not(.devtools-button):not(.theme-icon) {
+    font-family: monospace !important;
+  }
+
+  /* Set standard font size for code editors, console messages, and inspector trees */
+  .editor,
+  .CodeMirror,
+  .CodeMirror-code,
+  .CodeMirror-line,
+  .cm-content,
+  .cm-s-mozilla,
+  .message-body,
+  .webconsole-app,
+  .markup-container,
+  .child.nodes {
+    font-size: 11px !important;
+    /* Adjust this number to your liking */
+  }
+}
+
+/*
+ * 2. ABOUT: CONFIGURATIONS
+ */
+
+@-moz-document url-prefix("about:") {
+
+  :host,
+  body,
+  moz-page-nav *,
+  a,
+  td button {
+    font-family: sans-serif !important;
+  }
+
+  button[role="tab"],
+  button:not([id="logging-menu"], [class*="webextension"], [class*="devtools"]) {
+    font-family: sans-serif !important;
+    font-weight: 500 !important;
+  }
+
+  button:not([id="logging-menu"], [class*="webextension"], [class*="devtools"]) {}
+
+  table * {
+    font-family: monospace !important;
+  }
+
+  th {
+    font-weight: 500 !important;
+  }
+
+  td {
+    font-weight: 400 !important;
+  }
+}
+
+@-moz-document url-prefix("about:config") {
+  body {
+    font-weight: normal !important;
+    font-size: calc(var(--font-size-root) - 1px) !important;
+  }
+}
+
+@-moz-document url-prefix("about:preferences") {
+  section button {
+    font-family: sans-serif !important;
+  }
+
+  html|moz-page-nav * {
+    font-family: sans-serif !important;
+  }
+}
+
+@-moz-document url-prefix("about:buildconfig") {
+  body p {
+    font-size: 14px !important;
+  }
+}
+
+@-moz-document url-prefix("about:addons") {
+  button:not([slot="action"]) * {
+    font-family: monospace !important;
+  }
+
+}
+
+@-moz-document url-prefix("about:firefoxview") {
+  button:not([role="tab"]) * {
+    font-family: monospace !important;
+  }
+}
+
+@-moz-document url-prefix("about:processes") {
+  #process-table {
+    font-size: 13px !important;
+  }
+}
+
+@-moz-document url-prefix("about:third-party") {}
+
+@-moz-document url-prefix("about:serviceworkers") {
+  body {
+    font-size: 14px !important;
+  }
+}
+
+@-moz-document url-prefix("about:certificate") {}
+
+@-moz-document url-prefix("about:debugging") {}
+
+@-moz-document url-prefix("about:logging") {
+  select {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+  }
+}
+
+@-moz-document url-prefix("about:networking") {
+  body {
+    font-size: 13px !important
+  }
+
+}
+
+@-moz-document url-prefix("about:policies") {
+  table * {
+    font-family: sans-serif !important;
+  }
+
+  .content-style * {
+    font-family: monospace !important;
+  }
+}
+
+@-moz-document url-prefix("about:windows-messages") {
+  ul * {
+    font-family: monospace !important;
+    font-size: 14px !important;
+  }
+}
+
+@-moz-document url-prefix("about:support"), url-prefix("about:compat"), url-prefix("about:checkerboard"), url-prefix("about:certificate"), url-prefix("about:config"), url-prefix("about:debugging"), url-prefix("about:memory"), url-prefix("about:profiles"), url-prefix("about:studies"), url-prefix("about:webrtc"), url-prefix("about:unloads"), url-prefix("about:third-party"), url-prefix("about:networking") {
+  button:not([role="tab"], [id="logging-menu"]) {
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+
+    /* Sizing & Spacing */
+    padding: 8px 12px !important;
+
+    /* Color Palette (Dark Theme Example) */
+    background-color: #2b2a33 !important;
+    color: #f9f9fb !important;
+    border: 1px solid white !important;
+
+    /* Motion */
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+    cursor: pointer !important;
+
+  }
+
+  button[id="main-button"] .button-background {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+
+  }
+
+  button[id="main-button"] {
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+
+    /* Sizing & Spacing */
+    padding: 0 !important;
+
+    /* Color Palette (Dark Theme Example) */
+    background-color: #2b2a33 !important;
+    color: #f9f9fb !important;
+    border: 1px solid white !important;
+
+    /* Motion */
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease !important;
+    cursor: pointer !important;
+  }
+
+  button:hover,
+  dialog button:hover {
+    background-color: #383741 !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+
+  }
+
+  button:active,
+  dialog button:active {
+    background-color: #1f1e24 !important;
+    transform: scale(0.98);
+  }
+
+  button:focus-visible,
+  dialog button:focus-visible {
+    outline: 2px solid #00ddff !important;
+    outline-offset: 2px !important;
+  }
+}

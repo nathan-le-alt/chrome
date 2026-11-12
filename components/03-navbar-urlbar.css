@@ -1,0 +1,721 @@
+/*
+Address Bar, Search Bar, and Navbar Buttons
+*/
+
+:root {
+  --urlbar-min-height: var(--firefoxcss-searchbar-height) !important;
+}
+
+.urlbarView-result-menuitem {
+  font-family: monospace !important;
+}
+
+#urlbar-results span {
+  font-weight: 300 !important;
+}
+
+#urlbar,
+#searchbar {
+  font-size: 1.1rem !important;
+  font-weight: 300 !important;
+}
+
+#urlbar #urlbar-input {
+  text-align: center !important;
+}
+
+.urlbar-background,
+#urlbar .urlbar-input-container,
+#searchbar {
+  border-radius: 0 !important;
+}
+
+:root:not([lwtheme]) #urlbar .urlbar-input::placeholder,
+:root:not([lwtheme]) #urlbar .searchbar-textbox::placeholder {
+  color: color-mix(in srgb, currentColor 80%, transparent) !important;
+  opacity: 0.8 !important;
+}
+
+:root:not([lwtheme]) #urlbar[focused] .urlbar-input::placeholder {
+  opacity: 0.4 !important;
+}
+
+#urlbar .urlbarView-body-inner,
+#urlbar .urlbarView:not([noresults])>.search-one-offs:not([hidden]) {
+  border-top: none !important;
+}
+
+#urlbar[breakout][breakout-extend][open] .urlbar-background {
+  box-shadow: var(--firefoxcss-url-breakout-box-shadow) !important;
+}
+
+#PopupSearchAutoComplete {
+  --panel-background-color: var(--firefoxcss-url-breakout-bar-bg-color) !important;
+}
+
+.urlbarView-row[selected],
+.urlbarView-row[row-selectable]:not([selected]):hover {
+  border-radius: 0 !important;
+}
+
+#urlbar[breakout] {
+  --urlbar-height: var(--firefoxcss-searchbar-height) !important;
+}
+
+#urlbar-container {
+  --urlbar-container-height: var(--firefoxcss-searchbar-container-height) !important;
+}
+
+/* Combined breakout positioning and sizing */
+#urlbar[breakout][breakout-extend] {
+  width: var(--urlbar-width) !important;
+  margin-inline-start: 0px !important;
+  margin-block-start: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
+
+  &>.urlbar-input-container {
+    height: var(--urlbar-height) !important;
+    padding-block: 1px !important;
+    padding-inline: 1px !important;
+  }
+
+}
+
+.urlbarView-background {
+  border-radius: 0 !important;
+}
+
+#nav-bar #search-container #searchbar {
+  border-bottom: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.private-browsing-indicator-with-label,
+.private-browsing-indicator {
+  display: none !important;
+}
+
+#forward-button[disabled="true"] {
+  display: none !important;
+}
+
+#back-button .toolbarbutton-icon,
+#forward-button .toolbarbutton-icon {
+  padding: calc(var(--toolbarbutton-padding-inner) + 1px) !important;
+}
+
+#back-button>.toolbarbutton-icon {
+  border: none !important;
+  background: none !important;
+  width: calc(2 * var(--toolbarbutton-padding-inner) + 16px) !important;
+  height: calc(2 * var(--toolbarbutton-padding-inner) + 16px) !important;
+  padding: var(--toolbarbutton-padding-inner) !important;
+}
+
+#forward-button>.toolbarbutton-icon {
+  width: calc(2 * var(--toolbarbutton-padding-inner) + 16px) !important;
+  height: calc(2 * var(--toolbarbutton-padding-inner) + 16px) !important;
+  padding: var(--toolbarbutton-padding-inner) !important;
+}
+
+#PanelUI-button {
+  margin-inline-start: 0 !important;
+  padding-inline-start: 0 !important;
+  border: none !important;
+  border-inline-start: none !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover>.toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover>.toolbarbutton-text,
+toolbar .toolbarbutton-1:not([disabled="true"], [checked], [open], :active):hover>.toolbarbutton-badge-stack {
+  box-shadow: 0 0 4px var(--firefoxcss-toolbar-button-box-shadow) !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-icon,
+toolbar .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-text,
+toolbar .toolbarbutton-1:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-badge-stack {
+  box-shadow: 0 0 4px var(--firefoxcss-toolbar-button-active-box-shadow) !important;
+}
+
+@media not -moz-pref("sidebar.verticalTabs") {
+
+  #tabs-newtab-button .toolbarbutton-icon,
+  #new-tab-button .toolbarbutton-icon {
+    width: calc(2 * var(--toolbarbutton-padding-inner) + 12px) !important;
+    height: calc(2 * var(--toolbarbutton-padding-inner) + 12px) !important;
+  }
+}
+
+:root:not([lwtheme]) toolbar #tabs-newtab-button:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-icon,
+:root:not([lwtheme]) toolbar #new-tab-button:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-icon {
+  border: 0 !important;
+  border-radius: 100% !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-new-tab-button-active) !important;
+  box-shadow: inset 2px 2px 2px 0px var(--firefoxcss-new-tab-button-box-shadow-active) !important;
+}
+
+:root:not([lwtheme]) toolbar #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover>.toolbarbutton-icon,
+:root:not([lwtheme]) toolbar #new-tab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover>.toolbarbutton-icon {
+  border: 0 !important;
+  border-radius: 100% !important;
+  background-image: none !important;
+  background-color: var(--firefoxcss-new-tab-button-hover) !important;
+  box-shadow: 1px 1px 4px -1px var(--firefoxcss-new-tab-button-box-shadow-hover) !important;
+}
+
+#back-button:not([disabled]):not([open]):hover>.toolbarbutton-icon {
+  background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+#back-button:not([disabled="true"]):is([open], [checked], :hover:active)>.toolbarbutton-icon {
+  background-color: var(--toolbarbutton-active-background) !important;
+}
+
+#TabsToolbar #firefox-view-button {
+  margin-left: 2px !important;
+}
+
+#TabsToolbar #firefox-view-button:hover:not([open])>.toolbarbutton-icon {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  background-color: var(--firefoxcss-tab-hover-bg-color) !important;
+}
+
+#TabsToolbar #firefox-view-button[open]>.toolbarbutton-icon {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+  border-radius: var(--firefoxcss-border-radius) !important;
+  box-shadow: none !important;
+}
+
+:root:not([privatebrowsingmode]) :is(toolbarbutton, toolbarpaletteitem),
+:root[privatebrowsingmode]:is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) {
+  &~#tabbrowser-tabs[orient="horizontal"]::before {
+    border-inline-start: none !important;
+    padding-inline-start: 0px !important;
+    margin-inline-start: 0px !important;
+  }
+}
+
+#firefox-view-button {
+  padding-right: 0px !important;
+}
+
+/* Search Mode Switcher */
+
+/* @media -moz-pref("browser.urlbar.searchModeSwitcher.featureGate") or -moz-pref("browser.urlbar.scotchBonnet.enableOverride") {
+    #urlbar[searchmode] .searchmode-switcher {
+        --button-background-color-active: var(--button-background-color);
+        --button-background-color-hover: var(--button-background-color);
+        --button-background-color-selected: var(--button-background-color);
+        --button-background-color: var(--firefoxcss-item-bg-color) !important;
+        --button-background-color-muted: var(--firefoxcss-item-bg-color) !important;
+    }
+
+    #urlbar:not([searchmode]) .searchmode-switcher {
+        --button-background-color: transparent !important;
+        --button-background-color-muted: transparent !important;
+        --button-background-color-active: var(--firefoxcss-item-bg-color) !important;
+        --button-background-color-hover: var(--firefoxcss-item-bg-color) !important;
+        --button-background-color-selected: var(--firefoxcss-item-bg-color) !important;
+    }
+
+    .searchmode-switcher .searchmode-switcher-dropmarker {
+        fill: color-mix(in srgb, currentColor 60%, transparent) !important;
+
+        #urlbar .searchmode-switcher[open] & {
+            transform: rotate(180deg);
+            transition: transform 150ms ease;
+        }
+
+        #urlbar .searchmode-switcher & {
+            transition: transform 150ms ease;
+        }
+
+        #urlbar .searchmode-switcher:hover & {
+            fill: color-mix(in srgb, currentColor 90%, transparent) !important;
+        }
+    }
+} */
+
+.urlbarView-button {
+  .urlbarView-row:is([row-selectable]:hover, [selected])>&:not(:hover, [open]) {
+    background-color: transparent !important;
+    opacity: 0.8 !important;
+  }
+}
+
+.urlbar-go-button,
+#urlbar-go-button,
+.search-go-button {
+  display: none !important;
+}
+
+/* Url Auto Hide Buttons & Search Mode Switcher */
+
+@media not -moz-pref("mod.search.info.buttons.show.always") {
+  @media -moz-pref("browser.urlbar.trustPanel.featureGate") {
+
+    .urlbar-page-action,
+    .urlbar-revert-button {
+      &:not([disabled]):hover {
+        background-color: var(--toolbarbutton-hover-background) !important;
+      }
+    }
+
+    .urlbar-go-button:not([disabled]):hover {
+      background-color: light-dark(hsla(200, 5%, 100%, 1), hsla(0, 0%, 34%, 0.8)) !important;
+    }
+
+    .identity-box-button,
+    #tracking-protection-icon-container {
+      &:hover:not([open="true"]) {
+        background-color: var(--toolbarbutton-hover-background) !important;
+      }
+    }
+
+    #urlbar-label-box,
+    #urlbar-zoom-button {
+      background-color: var(--firefoxcss-item-bg-color) !important;
+    }
+
+    #urlbar-zoom-button:hover {
+      background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+    }
+
+    .urlbar-input-box {
+      margin-inline-start: 0px !important;
+    }
+
+    #identity-box {
+      padding-inline-end: 12px !important;
+      min-width: 32px !important;
+    }
+
+    @media -moz-pref("mod.hide.location.permissions.icon") {
+      #identity-permission-box box image.sharing-icon {
+        opacity: 0 !important;
+        visibility: collapse !important;
+        transition: opacity 100ms ease-in-out, visibility 100ms ease-in-out;
+        transition-delay: 100ms;
+      }
+
+      #identity-permission-box[open="true"] box image.sharing-icon {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: opacity 100ms ease, visibility 100ms ease;
+        transition-delay: 100ms;
+      }
+    }
+
+    #identity-box.extensionPage #identity-icon-box:not([open]) #identity-icon-label {
+      opacity: 0 !important;
+      visibility: collapse;
+    }
+
+    #identity-box.extensionPage #identity-icon-box #identity-icon-label {
+      transition: opacity 0.3s ease !important;
+    }
+
+    @media -moz-pref("mod.hide.extension.url.icon") {
+      #identity-box.extensionPage #identity-icon-box {
+        display: none !important;
+      }
+    }
+
+    #identity-permission-box[hasPermissions] #permissions-granted-icon+box,
+    #identity-permission-box[hasSharingIcon] #permissions-granted-icon+box {
+      visibility: collapse !important;
+    }
+
+    #trust-icon-container,
+    #identity-permission-box {
+      #urlbar & {
+        opacity: 0 !important;
+        transform: translateX(-14px) !important;
+        margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding)) !important;
+        transition: transform 100ms ease, opacity 100ms ease;
+        transition-delay: 80ms !important;
+      }
+
+      #urlbar:has(#identity-box:hover) &,
+      #urlbar:has(#trust-icon-container:hover) & {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        margin-inline-end: 0px !important;
+        transition: transform 100ms ease, opacity 100ms ease;
+      }
+
+      #urlbar &:hover:active,
+      #urlbar &[open="true"] {
+        opacity: 1 !important;
+        margin-inline-end: 0px !important;
+        transform: translateX(0) !important;
+      }
+    }
+
+    /* 4. Security Warning Overrides */
+    #urlbar #identity-box[pageproxystate="valid"] {
+
+      &.weakCipher,
+      &.mixedDisplayContent,
+      &.mixedDisplayContentLoadedActiveBlocked,
+      &.certUserOverridden,
+      &.certErrorPage,
+      &.notSecureText {
+        & #identity-icon-box {
+          margin-inline-end: 0px !important;
+          transform: translateX(0) !important;
+          opacity: 1 !important;
+          color: #e36f6f !important;
+          background-color: var(--firefoxcss-item-bg-color) !important;
+
+          &:hover:not([open]) {
+            background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+          }
+
+          &:is(:hover:active, [open]) {
+            background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+          }
+        }
+      }
+
+      &.notSecure,
+      &.mixedActiveContent,
+      &.httpsOnlyErrorPage {
+        & #identity-icon-box {
+          margin-inline-end: 0px !important;
+          transform: translateX(0) !important;
+          opacity: 1 !important;
+        }
+      }
+    }
+
+    #urlbar #trust-icon-container.insecure {
+      margin-inline-end: 0px !important;
+      transform: translateX(0) !important;
+      opacity: 1 !important;
+      background-color: var(--firefoxcss-item-bg-color) !important;
+
+      &:hover:not([open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+
+      &:is(:hover:active, [open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+    }
+
+    #urlbar #trust-icon-container.insecure:is(:not(:hover, [open])) #trust-label {
+      margin-inline-end: -70px !important;
+      visibility: collapse !important;
+      opacity: 0 !important;
+      transition:
+        visibility 100ms ease,
+        margin-inline-end 120ms ease,
+        opacity 100ms ease;
+      transition-delay: 100ms;
+    }
+
+    #urlbar #trust-icon-container.insecure #trust-label {
+      transition:
+        visibility 120ms ease,
+        margin-inline-end 120ms ease,
+        opacity 120ms ease;
+      transition-delay: 100ms;
+    }
+
+    :root:not([lwtheme]) #urlbar #identity-box[pageproxystate="valid"]:is(.chromeUI, .extensionPage)>#identity-icon-box {
+      background-color: var(--firefoxcss-item-bg-color) !important;
+
+      &:hover:not([open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+
+      &:is(:hover:active, [open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+    }
+
+    #urlbar #identity-box[pageproxystate="valid"]:is(.chromeUI, .extensionPage)>#identity-icon-box {
+      margin-inline-end: 0px !important;
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+    }
+
+    /* 3. Url Text Masking */
+    #trust-icon-container:hover~.urlbar-input-box>#urlbar-input,
+    #identity-box:hover~.urlbar-input-box>#urlbar-input {
+      mask-image:
+        linear-gradient(to right, transparent, black 3ch), linear-gradient(to left, transparent, black 3ch) !important;
+      mask-composite: intersect;
+    }
+
+    #urlbar:is(:not([usertyping]), :not([focused])):not([persistsearchterms]):not([pageproxystate="invalid"]) #page-action-buttons {
+      padding-inline-start: 12px !important;
+      min-width: 32px !important;
+    }
+
+    #urlbar:not([persistsearchterms]) .urlbar-input-container .urlbar-input-box {
+      padding-inline-start: 3px !important;
+    }
+
+    #urlbar:not(.searchButton)>.urlbar-input-container>#identity-box[pageproxystate="invalid"]>.identity-box-button {
+      padding-inline: var(--urlbar-icon-padding) !important;
+    }
+
+    #page-action-buttons .urlbar-page-action {
+      margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding)) !important;
+      opacity: 0 !important;
+      transition: opacity 100ms ease-in-out;
+    }
+
+    #translations-button-locale {
+      color: white !important;
+    }
+
+    #page-action-buttons #translations-button[translationsactive="true"] {
+      margin-inline-end: initial !important;
+      opacity: 1 !important;
+    }
+
+    #page-action-buttons #reader-mode-button[readeractive] {
+      margin-inline-end: initial !important;
+      opacity: 1 !important;
+    }
+
+    #page-action-buttons:hover>.urlbar-page-action,
+    #page-action-buttons .urlbar-page-action[open],
+    #page-action-buttons .urlbar-page-action[open]~.urlbar-page-action {
+      opacity: 1 !important;
+      margin-inline-end: initial !important;
+      transition: opacity 100ms ease;
+    }
+
+  }
+
+  /* Fallback Branch */
+  @media not -moz-pref("browser.urlbar.trustPanel.featureGate") {
+
+    .urlbar-page-action,
+    .urlbar-revert-button,
+    .search-go-button {
+      &:not([disabled]):hover {
+        background-color: var(--toolbarbutton-hover-background) !important;
+      }
+    }
+
+    .urlbar-go-button:not([disabled]):hover {
+      background-color: light-dark(hsla(200, 5%, 100%, 1), hsla(0, 0%, 34%, 0.8)) !important;
+    }
+
+    .identity-box-button,
+    #tracking-protection-icon-container {
+      &:hover:not([open="true"]) {
+        background-color: var(--toolbarbutton-hover-background) !important;
+      }
+    }
+
+    #urlbar-label-box,
+    #urlbar-zoom-button {
+      background-color: var(--firefoxcss-item-bg-color) !important;
+    }
+
+    #urlbar-zoom-button:hover {
+      background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+    }
+
+    @media -moz-pref("mod.hide.location.permissions.icon") {
+      #identity-permission-box box image.sharing-icon {
+        opacity: 0 !important;
+        visibility: collapse !important;
+        transition:
+          opacity 100ms ease-in-out,
+          visibility 100ms ease-in-out;
+        transition-delay: 100ms;
+      }
+
+      #identity-permission-box[open="true"] box image.sharing-icon {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition:
+          opacity 100ms ease,
+          visibility 100ms ease;
+        transition-delay: 100ms;
+      }
+    }
+
+    #identity-box.extensionPage #identity-icon-box:not([open]) #identity-icon-label {
+      opacity: 0;
+      visibility: collapse;
+    }
+
+    #identity-box.extensionPage #identity-icon-box #identity-icon-label {
+      transition: opacity 0.3s ease;
+    }
+
+    @media -moz-pref("mod.hide.extension.url.icon") {
+      #identity-box.extensionPage #identity-icon-box {
+        display: none !important;
+      }
+    }
+
+    #tracking-protection-icon-container,
+    #identity-icon-box,
+    #identity-permission-box {
+
+      #urlbar & {
+        opacity: 0 !important;
+        margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
+        transition:
+          margin-inline-start 150ms ease-in-out,
+          opacity 100ms ease-in-out;
+        transition-delay: 100ms;
+      }
+
+      #urlbar:has(#identity-box:hover) &,
+      #urlbar:has(#tracking-protection-icon-container:hover) & {
+        opacity: 1 !important;
+        margin-inline-start: initial !important;
+        transition:
+          margin-inline-start 100ms ease,
+          opacity 100ms ease;
+        transition-delay: 100ms;
+      }
+
+      #urlbar &:hover:active,
+      #urlbar &[open="true"] {
+        opacity: 1 !important;
+        margin-inline-start: initial !important;
+      }
+    }
+
+    @media not -moz-pref("mod.hide.location.permissions.icon") {
+      #urlbar #identity-permission-box:has(image.sharing-icon[sharing]) {
+        opacity: 1 !important;
+        margin-inline-start: initial !important;
+        transition:
+          margin-inline-start 100ms ease,
+          opacity 100ms ease;
+        transition-delay: 100ms;
+      }
+    }
+
+    /* 4. SECURITY WARNING OVERRIDES (FALLBACK) */
+    #urlbar #identity-box[pageproxystate="valid"] {
+
+      &.weakCipher,
+      &.mixedDisplayContent,
+      &.mixedDisplayContentLoadedActiveBlocked,
+      &.certUserOverridden,
+      &.certErrorPage,
+      &.notSecureText {
+        & #identity-icon-box {
+          margin-inline-start: initial !important;
+          opacity: 1 !important;
+          color: #e36f6f !important;
+          background-color: var(--firefoxcss-item-bg-color) !important;
+
+          &:hover:not([open]) {
+            background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+          }
+
+          &:is(:hover:active, [open]) {
+            background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+          }
+        }
+      }
+
+      &.notSecure,
+      &.mixedActiveContent,
+      &.httpsOnlyErrorPage {
+        & #identity-icon-box {
+          margin-inline-start: initial !important;
+          opacity: 1 !important;
+        }
+      }
+    }
+
+    #urlbar #identity-box[pageproxystate="valid"]:is(.chromeUI, .extensionPage)>#identity-icon-box {
+      margin-inline-start: initial !important;
+      opacity: 1 !important;
+      background-color: var(--firefoxcss-item-bg-color) !important;
+
+      &:hover:not([open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+
+      &:is(:hover:active, [open]) {
+        background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+      }
+    }
+
+    #urlbar:not([persistsearchterms]) .urlbar-input-container .urlbar-input-box {
+      padding-inline-start: 3px !important;
+    }
+
+    /* Url Text Masking (Fallback) */
+    #identity-box:hover~.urlbar-input-box>#urlbar-input,
+    #tracking-protection-icon-container:hover~.urlbar-input-box>#urlbar-input {
+      mask-image:
+        linear-gradient(to right, transparent, black 3ch), linear-gradient(to left, transparent, black 3ch) !important;
+      mask-composite: intersect;
+    }
+
+    #urlbar:is(:not([usertyping]), :not([focused])):not([persistsearchterms]) #page-action-buttons {
+      padding-inline-start: 6px;
+    }
+
+    #urlbar:not(.searchButton)>.urlbar-input-container>#identity-box[pageproxystate="invalid"]>.identity-box-button {
+      padding-inline: var(--urlbar-icon-padding) !important;
+    }
+
+    /* Auto-hiding Page Actions (Fallback) */
+    #page-action-buttons .urlbar-page-action {
+      margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding)) !important;
+      opacity: 0 !important;
+      transition:
+        margin-inline-end 150ms ease-in-out,
+        opacity 100ms ease-in-out;
+    }
+
+    #translations-button-locale {
+      color: white !important;
+    }
+
+    #page-action-buttons #translations-button[translationsactive="true"] {
+      margin-inline-end: initial !important;
+      opacity: 1 !important;
+    }
+
+    #page-action-buttons #reader-mode-button[readeractive] {
+      margin-inline-end: initial !important;
+      opacity: 1 !important;
+    }
+
+    #page-action-buttons:hover>.urlbar-page-action,
+    #page-action-buttons .urlbar-page-action[open],
+    #page-action-buttons .urlbar-page-action[open]~.urlbar-page-action {
+      opacity: 1 !important;
+      margin-inline-end: initial !important;
+      transition:
+        margin-inline-end 100ms ease,
+        opacity 100ms ease;
+    }
+  }
+}
+
+/* Completely hide the search mode switcher button in the URL bar */
+.searchmode-switcher,
+#urlbar-searchmode-switcher {
+  display: none !important;
+}
+
+/* Force-hide the search mode dropdown panel if it tries to spawn */
+.searchmode-switcher-panel,
+#searchmode-switcher-panel {
+  display: none !important;
+}

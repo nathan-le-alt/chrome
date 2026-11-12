@@ -1,0 +1,121 @@
+/*
+CONTEXT MENUS, HAMBURGER MENU, POPUPS & DIALOGS
+*/
+
+/* 1. Typography Overrides */
+
+/* Monospace UI elements */
+#appMenu-popup,
+#appMenu-popupPanel,
+.panelMenuPanel,
+.main-panelview,
+.home-section,
+#appMenu-popup label,
+#appMenu-popup span,
+#appMenu-popup description,
+.panel-header,
+menupopup,
+menu,
+menuitem,
+.popup-internal-box,
+button[part="dialog-button"],
+#trustpanel-popup-connection,
+#PanelUI-developer-tools-view .toolbarbutton-text {
+  font-family: monospace !important;
+}
+
+/* UI elements reverting to system sans-serif */
+#unified-extensions-view .panel-subview-body,
+#unified-extensions-view #unified-extensions-manage-extensions,
+#appMenu-mainView .panel-subview-body,
+#PanelUI-profiler-content,
+.PanelUI-subView,
+.panel-subview-body,
+.subviewbutton::after,
+.translations-panel-content,
+.panel-footer,
+.permission-popup-section,
+#appMenu-addon-installed-notification,
+#addon-webext-permissions-notification,
+#select-translations-panel-main-content {
+  font-family: sans-serif !important;
+}
+
+/* 2. Menu & Panel Compact Spacing */
+
+menupopup menuitem,
+menupopup menu,
+.bookmark-item,
+#appMenu-popup .subviewbutton,
+panelview .subviewbutton {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+#appMenu-popup toolbarseparator,
+panelview toolbarseparator {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+/* 3. Dialogs & Dialog Surfaces */
+
+#bookmarkproperties {
+  --background-color-canvas: var(--firefoxcss-item-bg-color) !important;
+  --background-color-box: color-mix(in srgb, var(--firefoxcss-item-bg-color) 80%, black) !important;
+}
+
+.browserContainer>findbar .findbar-textbox {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+/* 4. Customization Mode View */
+
+#customization-container {
+  background-image: none !important;
+  background-color: var(--firefoxcss-main-bg-color) !important;
+}
+
+#customization-container #customization-footer {
+  border-top: none !important;
+}
+
+#PersonalToolbar[customizing] toolbarpaletteitem[place='toolbar']>toolbarspring,
+#nav-bar[customizing] toolbarpaletteitem[place='toolbar']>toolbarspring,
+#customization-container toolbarpaletteitem[place='palette']>toolbarspring {
+  outline: 1px solid var(--firefoxcss-customize-view-flex-space) !important;
+  outline-offset: -3px !important;
+  border-radius: 6px !important;
+}
+
+#PersonalToolbar[customizing] {
+  outline: 1px dashed var(--firefoxcss-customize-view-dashed-outline) !important;
+}
+
+/* OS-Specific Customization Panel Styling */
+:root:not([platform="macos"]) #customization-panelWrapper>.panel-arrowcontent {
+  border-radius: 10px !important;
+  background-color: var(--firefoxcss-customize-view-overflow-menu) !important;
+}
+
+#customization-container #customization-footer .customizationmode-button {
+  border-radius: 4px !important;
+}
+
+/* Universal font size override for all Firefox popups, menus, and panels */
+panel,
+panelview,
+menupopup,
+.panel-subview-body,
+.PanelUI-subView,
+#appMenu-popup,
+#appMenu-popupPanel,
+#unified-extensions-panel,
+#downloadsPanel,
+#trustpanel-popup,
+#editBookmarkPanel,
+#permission-popup,
+#tab-preview-panel,
+#full-page-translations-panel {
+  font-size: 12.5px !important;
+}

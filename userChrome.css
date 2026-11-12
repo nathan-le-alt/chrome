@@ -1,0 +1,10 @@
+/*
+ * MAIN USERCHROME.CSS
+ * Imports all modular components from the components/ folder.
+ */
+
+@import "components/01-variables.css";
+@import "components/02-tabs.css";
+@import "components/03-navbar-urlbar.css";
+@import "components/04-menus-popups.css";
+@import "components/05-mods-tweaks.css";
